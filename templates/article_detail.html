@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="article-entry">
+    <h2>{{ article.title }}</h2>
+    <p>article by: {{ article.author }}</p>
+    <p>{{ article.body }}</p>
+    {% if user == article.author %}
+    <a href="{% url 'article_edit' article.pk %}" class="btn btn-primary mt-3">+ Edit Article</a>
+    <a href="{% url 'article_delete' article.pk %}" class="btn btn-primary ms-3 mt-3">- Delete Article</a>
+    <a href="{% url 'home' %}" class="btn btn-danger ms-3 mt-3">Back</a>
+    {% else %}
+    <!-- only let the author edit or delete article -->
+    <!-- Send them back to home page -->
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back to home page</a>
+    {% endif %}
+</div>
+{% endblock content %}
