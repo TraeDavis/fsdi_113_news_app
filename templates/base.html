@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,9 +9,11 @@
         rel="stylesheet" 
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" 
         crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
               <a class="navbar-brand" href="{% url 'home' %}">News</a>
               <button 
@@ -25,35 +28,36 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                  <div class="nav-left">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                  </div>
+                  <div class="nav-right">
+                    {% if user.is_authenticated %}
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                  </li>
-                  {% if user.is_authenticated %}
-                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                 </li> 
-                  {% else %}
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'password_reset' %}">Password Reset</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                  </li>
-                  {% endif %}
+                      <a class="nav-link btn btn-secondary btn-sm" href="{% url 'password_change' %}">Change Password</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link btn btn btn-outline-secondary ms-2" href="{% url 'logout' %}">Log Out</a>
+                  </li> 
+                    {% else %}
+                    
+                    <li class="nav-item">
+                      <a class="nav-link btn btn-secondary btn-sm" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link btn btn-outline-secondary ms-2 " href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
+                  </div>
                 </ul>
               </div>
             </div>
           </nav>
 
         <main>
-          <div class="container">
+          <div class="container mt-3">
             {% block content %}
             {% endblock content %}
           </div>
