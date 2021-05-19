@@ -5,6 +5,7 @@ from django.views.generic.edit import (
     DeleteView
 )
 from .models import Article
+from .forms import ArticleForm
 from django.urls import reverse_lazy
 from accounts.models import CustomUser
 
@@ -18,8 +19,9 @@ class ArticleDetailView(DetailView):
 
 class ArticleCreateView(CreateView):
     model = Article
+    form_class = ArticleForm
     template_name = 'article_new.html'
-    fields = ['title', 'author', 'body']
+    
 
 class ArticleUpdateView(UpdateView):
     model = Article

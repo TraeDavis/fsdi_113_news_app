@@ -1,4 +1,8 @@
 /* BASE HTML */
+body{
+    background-color: rgba(128, 128, 128, 0.37);
+    font-family: 'Newsreader', serif;
+}
 .navbar-nav{
     width: 100%;
 }
@@ -13,9 +17,17 @@
     color: whitesmoke!important;
 }
 /* HOME HTML */
-.new-post{
-
+.col-9{
+    width: 50%;
+}
+.single-article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .article-entry-list{
-
+    background-color: rgba(255, 255, 255, 0.664);
+    padding: 1rem;
+    margin-bottom: 1rem;
 }

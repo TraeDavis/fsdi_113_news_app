@@ -8,24 +8,34 @@
         <div class="col-3">
             <div class="new-post">
                 <a href="{% url 'article_new' %}">+ Create an article</a>
-                    
+                
             </div>
         </div>
         <div class="col-9">
             {% for article in object_list %}
             <div class="article-entry-list">
+                <div class="single-article">
                 <h4>
                     <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
                 </h4>
-                <p>article by: {{ article.author }}</p>
+                <img 
+                src="{{ article.image.url }}" alt="{{ article.title }}"
+                width="50%">
+
+                <p>By: {{ article.author }}</p>
                 <p>{{ article.body }}</p>
+                </div>
             </div>
         
             {% endfor %}
         </div>
     </div>
     {% else %}
-        <p>You are not logged in. Please log in or sign up by clicking the log in or sign up button in the upper right corner.</p>
-
+    <div class="d-flex flex-column align-items-center mt-5">
+        <h1>Welcome to The Algo Articles</h1>
+        <p>Your one stop for all talk about the Algorand cryptocurrency.</p>
+        <p>Sign up to get access to our great community.</p>
+        <button class="nav-link btn btn-outline-success ms-2 " href="{% url 'signup' %}">Sign Up</button>
+    </div>
     {% endif %}
 {% endblock content %}
