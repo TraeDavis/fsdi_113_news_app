@@ -3,13 +3,15 @@
 {% block title %}Log In{% endblock title %}
 
 {% block content %}
-    <h2>Log In</h2>
+<div class="bg-light p-5 rounded mt-5 shadow">
+    <h2 class=" border-bottom-utl">Log In</h2>
     <form method="post">
         {% csrf_token %}
         {{ form | crispy }}
         
-            <button class="btn btn-success my-3" type="submit">Log In</button>
-            <a class="nav-link p-0" href="{% url 'password_reset' %}">Forgot Password?</a>
+            <button class="btn btn-primary my-3" type="submit">Log In</button>
+            <a class="nav-link pass-link p-0" href="{% url 'password_reset' %}">Forgot Password?</a>
         
     </form>
+</div>
 {% endblock content %}

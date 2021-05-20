@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<div class="article-entry">
-    <h2>{{ article.title }}</h2>
-    <p>article by: {{ article.author }}</p>
-    <p>{{ article.body }}</p>
+{% block title %}{{ article.title }}{% endblock title %}
+{% block content %} 
+<div class="article-detail rounded shadow">
+    <h2 class=" title-case" >{{ article.title }}</h2>
+    <img src="{{ article.image.url }}" alt="{{ artilce.title }}">
+    <p class="title-case text-muted">by: {{ article.author }} | {{ article.date }}</p>
+    <p class="text-container">{{ article.body }}</p>
     {% if user == article.author %}
-    <a href="{% url 'article_edit' article.pk %}" class="btn btn-primary mt-3">+ Edit Article</a>
-    <a href="{% url 'article_delete' article.pk %}" class="btn btn-primary ms-3 mt-3">- Delete Article</a>
-    <a href="{% url 'home' %}" class="btn btn-danger ms-3 mt-3">Back</a>
+    <div class="btn-container">
+        <a href="{% url 'article_edit' article.pk %}" class="btn btn-primary mt-3">+ Edit Article</a>
+        <a href="{% url 'article_delete' article.pk %}" class="btn btn-danger ms-3 mt-3">- Delete Article</a>
+        <a href="{% url 'article_list' %}" class="btn btn-dark ms-3 mt-3">Back</a>
+    </div>
     {% else %}
     <!-- only let the author edit or delete article -->
     <!-- Send them back to home page -->
-    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back to home page</a>
+    <div class="btn-container">
+        <a href="{% url 'article_list' %}" class="btn btn-primary mt-3">Back to Articles</a>
+    </div>
     {% endif %}
 </div>
 {% endblock content %}

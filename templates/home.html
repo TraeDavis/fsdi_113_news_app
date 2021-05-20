@@ -3,39 +3,54 @@
 {% block title %}Algo Articles{% endblock title %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-    <div class="row align-items-start">
-        <div class="col-3">
-            <div class="new-post">
-                <a href="{% url 'article_new' %}">+ Create an article</a>
-                
-            </div>
-        </div>
-        <div class="col-9">
-            {% for article in object_list %}
-            <div class="article-entry-list">
-                <div class="single-article">
-                <h4>
-                    <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
-                </h4>
-                <img 
-                src="{{ article.image.url }}" alt="{{ article.title }}"
-                width="50%">
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3 shadow">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold border-bottom-utl">Welcome to the Algo Articles</h1>
+        <p class="col-md-8 fs-4">Your one stop for all talk about the Algorand cryptocurrency. </p>
+        <p class="col-md-8 fs-4"> View our amazing articles on one of the greatest Crypto options out there.</p>
+        <a 
+        class="btn btn-primary btn-lg" 
+        type="button"
+        href="{% url 'article_list' %}">
+        View Articles
+        </a>
+      </div>
+    </div>
 
-                <p>By: {{ article.author }}</p>
-                <p>{{ article.body }}</p>
-                </div>
-            </div>
-        
-            {% endfor %}
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3 shadow hover-effect">
+          <h2 class="border-bottom-utl">Upcoming Events</h2>
+          <p>As an active part of the vibrant blockchain community, we regularly hold meetups and events with those looking to learn more about the Algorand Foundation, blockchain, and understand what is possible with Algorand technology. Check out our community.algorand.org page for more information on upcoming events.</p>
+          <button 
+            class="btn btn-outline-light" 
+            type="button"  
+            >
+            Learn More
+          </button>
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-secondary rounded-3 text-light shadow hover-effect">
+          <h2 class="border-bottom-utl" >Latest News</h2>
+          {% for article in object_list %}
+            {% if forloop.last %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" width=50>
+            <h4>{{ article.title }}</h4>
+            <p class="line-height-sm">By: {{ article.author }}</p>
+            <p>{{ article.body|safe|truncatechars:50 }}</p>
+            <a class="btn btn-outline-light btn-hover" type="button" href="{% url 'article_detail' article.pk %}">Read More</a>
+            {% else %}
+            <!-- Print nothing if not the latest article made -->
+            {% endif %}
+          {% endfor %}
+            
+        </div>
+      </div>
     </div>
-    {% else %}
-    <div class="d-flex flex-column align-items-center mt-5">
-        <h1>Welcome to The Algo Articles</h1>
-        <p>Your one stop for all talk about the Algorand cryptocurrency.</p>
-        <p>Sign up to get access to our great community.</p>
-        <button class="nav-link btn btn-outline-success ms-2 " href="{% url 'signup' %}">Sign Up</button>
-    </div>
-    {% endif %}
+
+
+  </div>
+
 {% endblock content %}

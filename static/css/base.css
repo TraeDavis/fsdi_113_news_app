@@ -3,31 +3,83 @@ body{
     background-color: rgba(128, 128, 128, 0.37);
     font-family: 'Newsreader', serif;
 }
+a{
+    color: whitesmoke!important;
+    text-decoration: none;
+}
 .navbar-nav{
     width: 100%;
+}
+.nav-left{
+    display: flex;
+}
+.nav-left .nav-item:hover{
+    background-color: #0d6dfd67;
+    border-radius: 2px;
+    border-bottom: 1px solid whitesmoke;
 }
 .nav-right{
     display: flex;
     width: 100%;
     justify-content: flex-end;
     margin-right: 5%;
+    
 }
-.btn-sm,
-.btn-outline-secondary{
+.nav-link{
     color: whitesmoke!important;
 }
-/* HOME HTML */
-.col-9{
-    width: 50%;
+.title-case{
+    text-transform: capitalize;
 }
-.single-article{
+/* HOME CSS */
+.border-bottom-utl{
+    border-bottom: 4px solid rgb(0, 89, 255);
+}
+.line-height-sm{
+    line-height: .2rem;
+}
+.btn-hover:hover{
+    color: black!important;
+}
+.shadow {
+    box-shadow: 0 .5rem 1rem rgb(17, 17, 17)!important;
+}
+.hover-effect{
+    transition: transform .2s; /* Animation */
+}
+.hover-effect:hover{
+    transform: scale(1.05);
+}
+/* ARTICLE LIST CSS */
+.sign-up-cta{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.685);
+    color: whitesmoke;
+    text-decoration: none;
+}
+.card{
+    border: none;
+}
+/* ARTICLE DETAIL CSS */
+.article-detail{
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 2rem;
+    margin-bottom: 3rem;
 }
-.article-entry-list{
-    background-color: rgba(255, 255, 255, 0.664);
-    padding: 1rem;
-    margin-bottom: 1rem;
+.btn-container{
+    justify-content: flex-start;
+    width: 100%;
+}
+.text-container{
+    width: 80%;
+    font-size: 1.125rem;
+}
+/* LOGIN CSS */
+.pass-link{
+    color: blue!important;
 }

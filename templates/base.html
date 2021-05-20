@@ -23,7 +23,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/algo-logo.png" alt="" width="44" >Algo Articles </a>
+              <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/algo-logo.png' %}" alt="" width="44" >Algo Articles </a>
               <button 
               class="navbar-toggler" 
               type="button" 
@@ -37,25 +37,28 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <div class="nav-left">
-                    <li class="nav-item">
+                    <li class="nav-item ms-3 p-1">
                       <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item ms-2 p-1">
+                      <a class="nav-link active" aria-current="page" href="{% url 'article_list' %}">Articles</a>
                     </li>
                   </div>
                   <div class="nav-right">
                     {% if user.is_authenticated %}
                   <li class="nav-item">
-                      <a class="nav-link btn btn-secondary btn-sm" href="{% url 'password_change' %}">Change Password</a>
+                      <a class="nav-link btn btn-primary btn-sm" href="{% url 'password_change' %}">Change Password</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link btn btn btn-outline-secondary ms-2" href="{% url 'logout' %}">Log Out</a>
+                      <a class="nav-link btn btn btn-outline-primary ms-2" href="{% url 'logout' %}">Log Out</a>
                   </li> 
                     {% else %}
                     
                     <li class="nav-item">
-                      <a class="nav-link btn btn-secondary btn-sm" href="{% url 'login' %}">Log In</a>
+                      <a class="nav-link btn btn-primary btn-sm" href="{% url 'login' %}">Log In</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link btn btn-outline-secondary ms-2 " href="{% url 'signup' %}">Sign Up</a>
+                      <a class="nav-link btn btn-outline-primary ms-2 " href="{% url 'signup' %}">Sign Up</a>
                     </li>
                     {% endif %}
                   </div>
@@ -71,6 +74,9 @@
           </div>
         </main>
 
+        <footer class="pt-3 mt-4 text-muted border-top">
+          © 2021
+        </footer>
 
         <!-- JavaScript Bundle with Popper -->
         <script 

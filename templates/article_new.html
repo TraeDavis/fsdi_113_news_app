@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
+{% block title %}Create Article{% endblock title %}
+
 {% block content %}
-<div class="top-margin border-template">
-    <h1>New Article</h1>
+<div class="bg-light p-5 rounded mt-5">
+    <h1 class="border-bottom-utl">New Article</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy }}
         
-        <input class="btn btn-primary" type="submit" value="Save">
+        <button class="btn btn-primary" type="submit">Save</button>
     </form>
 </div>
 {% endblock content %}
