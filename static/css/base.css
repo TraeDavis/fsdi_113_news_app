@@ -2,6 +2,7 @@
 body{
     background-color: rgba(128, 128, 128, 0.37);
     font-family: 'Newsreader', serif;
+    min-height: 100vh;
 }
 a{
     color: whitesmoke!important;
@@ -31,6 +32,11 @@ a{
 .title-case{
     text-transform: capitalize;
 }
+.container{
+    position: relative;
+    min-height: 100vh;
+}
+
 /* HOME CSS */
 .border-bottom-utl{
     border-bottom: 4px solid rgb(0, 89, 255);
@@ -61,6 +67,12 @@ a{
 }
 .card{
     border: none;
+    width: 75%;
+}
+@media screen and (max-width:768px){
+    .card{
+        width: 100%;
+    }
 }
 /* ARTICLE DETAIL CSS */
 .article-detail{
