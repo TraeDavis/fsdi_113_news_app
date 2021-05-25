@@ -4,7 +4,7 @@
 {% block content %} 
 <div class="article-detail rounded shadow">
     <h2 class=" title-case" >{{ article.title }}</h2>
-    <img src="{{ article.image.url }}" alt="{{ artilce.title }}">
+    <img src="{{ article.image.url }}" alt>
     <p class="title-case text-muted">by: {{ article.author }} | {{ article.date }}</p>
     <p class="text-container">{{ article.body }}</p>
     {% if user == article.author %}
